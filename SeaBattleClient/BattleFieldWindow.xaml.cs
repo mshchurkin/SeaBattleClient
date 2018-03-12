@@ -351,8 +351,6 @@ namespace SeaBattleClient
             }
             else if (oneCheck.IsChecked == true)
             {
-                if (HorRad.IsChecked == true)
-                {
                     oneCount--;
                     List<Cell> cells = new List<Cell>();
                     Cell cell = new Cell();
@@ -369,31 +367,30 @@ namespace SeaBattleClient
                         oneCheck.IsChecked = false;
                         oneCheck.IsEnabled = false;
                     }
-                }     
             }
-            else
-            {
-                Ships ships = new Ships();
-                ships.ships = shipsList;
-                if (client.ShipsLocate(myId, battleId, ships) == true)
-                {
-                    mainLabel.Content = "Ожидание второго игрока";
-                }
-                else
-                {
-                    MessageBox.Show("Неправильно расставлены корабли");
-                    fourCheck.IsEnabled = true;
-                    threeCount = 3;
-                    threeCheck.IsEnabled = true;
-                    twoCount = 2;
-                    twoCheck.IsEnabled = true;
-                    oneCheck.IsEnabled = true;
-                    oneCount = 4;
-                    MyCells.Items.Clear();
-                    EnemyCells.Items.Clear();
-                    FillBattleCells();
-                }
-            }
+            //else
+            //{
+            //    Ships ships = new Ships();
+            //    ships.ships = shipsList;
+            //    if (client.ShipsLocate(myId, battleId, ships) == true)
+            //    {
+            //        mainLabel.Content = "Ожидание второго игрока";
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Неправильно расставлены корабли");
+            //        fourCheck.IsEnabled = true;
+            //        threeCount = 3;
+            //        threeCheck.IsEnabled = true;
+            //        twoCount = 2;
+            //        twoCheck.IsEnabled = true;
+            //        oneCheck.IsEnabled = true;
+            //        oneCount = 4;
+            //        MyCells.Items.Clear();
+            //        EnemyCells.Items.Clear();
+            //        FillBattleCells();
+            //    }
+            //}
         }
 
         private void EnemyCells_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -417,21 +414,21 @@ namespace SeaBattleClient
                     DataGridCell cellColor = GetCell(rowIndex, colIndex, EnemyCells);
                     cellColor.Background = new SolidColorBrush(Colors.Blue);
                 }
-                //if (client.GetWinner(battleId) != "0")
-                //{
-                //    if (client.GetWinner(battleId) == myId)
-                //    {
-                //        MessageBox.Show("Поздравляем, вы победили");
-                //        client.ExitGame(myId);
-                //        this.Close();
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("Вы проиграли");
-                //        client.ExitGame(myId);
-                //        this.Close();
-                //    }
-                //}
+                if (client.GetWinner(battleId) != "0")
+                {
+                    if (client.GetWinner(battleId) == myId)
+                    {
+                        MessageBox.Show("Поздравляем, вы победили");
+                        client.ExitGame(myId);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы проиграли");
+                        client.ExitGame(myId);
+                        this.Close();
+                    }
+                }
             }
         }
     }
