@@ -1,0 +1,14 @@
+﻿<Window x:Class="SeaBattleClient.EnemySelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SeaBattleClient"
+        mc:Ignorable="d"
+        Title="EnemySelection" Height="400" Width="300">
+    <Grid Background="DarkBlue">
+        <Label VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="34" Foreground="OrangeRed" FontFamily="IMPACT" >Выбор противника</Label>
+        <ListBox Margin="5,50,5,40" Background="DarkBlue" Foreground="Red" Name="playersList" SelectionChanged="playersList_SelectionChanged"></ListBox>
+        <Button VerticalAlignment="Bottom" Height="30" Margin="5" Background="Aqua" Foreground="Red" FontFamily="Impact" FontSize="18" Click="Button_Click">Выбрать случайного противника</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GameService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SeaBattleGame" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_FindEnemy_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindEnemy" />
+  </wsdl:message>
+  <wsdl:message name="IService1_FindEnemy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindEnemyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateBattle_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBattle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateBattle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBattleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_StartBattle_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartBattle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_StartBattle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartBattleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateNewPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateNewPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SignIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SignIn" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SignIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SignInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ShowOnlinePlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShowOnlinePlayers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ShowOnlinePlayers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShowOnlinePlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_MakeShot_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeShot" />
+  </wsdl:message>
+  <wsdl:message name="IService1_MakeShot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeShotResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ShipsLocate_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShipsLocate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ShipsLocate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShipsLocateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ExitGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExitGame" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ExitGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExitGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWinner" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetWinner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWinnerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="FindEnemy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/FindEnemy" message="tns:IService1_FindEnemy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/FindEnemyResponse" message="tns:IService1_FindEnemy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBattle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateBattle" message="tns:IService1_CreateBattle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateBattleResponse" message="tns:IService1_CreateBattle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartBattle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/StartBattle" message="tns:IService1_StartBattle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/StartBattleResponse" message="tns:IService1_StartBattle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateNewPlayer" message="tns:IService1_CreateNewPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateNewPlayerResponse" message="tns:IService1_CreateNewPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SignIn" message="tns:IService1_SignIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SignInResponse" message="tns:IService1_SignIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowOnlinePlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ShowOnlinePlayers" message="tns:IService1_ShowOnlinePlayers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ShowOnlinePlayersResponse" message="tns:IService1_ShowOnlinePlayers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeShot">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/MakeShot" message="tns:IService1_MakeShot_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/MakeShotResponse" message="tns:IService1_MakeShot_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShipsLocate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ShipsLocate" message="tns:IService1_ShipsLocate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ShipsLocateResponse" message="tns:IService1_ShipsLocate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExitGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ExitGame" message="tns:IService1_ExitGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ExitGameResponse" message="tns:IService1_ExitGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetWinner" message="tns:IService1_GetWinner_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetWinnerResponse" message="tns:IService1_GetWinner_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindEnemy">
+      <soap:operation soapAction="http://tempuri.org/IService1/FindEnemy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBattle">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateBattle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartBattle">
+      <soap:operation soapAction="http://tempuri.org/IService1/StartBattle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewPlayer">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateNewPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn">
+      <soap:operation soapAction="http://tempuri.org/IService1/SignIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowOnlinePlayers">
+      <soap:operation soapAction="http://tempuri.org/IService1/ShowOnlinePlayers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeShot">
+      <soap:operation soapAction="http://tempuri.org/IService1/MakeShot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShipsLocate">
+      <soap:operation soapAction="http://tempuri.org/IService1/ShipsLocate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExitGame">
+      <soap:operation soapAction="http://tempuri.org/IService1/ExitGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinner">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetWinner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GameService">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://seabattlegame2.azurewebsites.net/GameService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

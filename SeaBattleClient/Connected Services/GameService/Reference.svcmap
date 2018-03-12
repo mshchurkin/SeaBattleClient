@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="02ed4e02-79c8-4189-88dd-33853066608c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://seabattlegame2.azurewebsites.net/gameservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GameService.xsd" MetadataType="Schema" ID="ec509135-2280-4f8f-af56-e76a0a8cb35d" SourceId="1" SourceUrl="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd1" />
+    <MetadataFile FileName="GameService1.xsd" MetadataType="Schema" ID="5103663d-1485-4d0c-b09c-ed45e512abc2" SourceId="1" SourceUrl="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd0" />
+    <MetadataFile FileName="GameService.disco" MetadataType="Disco" ID="f63ce9fd-7098-4cca-99d8-dc730d6e9cb7" SourceId="1" SourceUrl="http://seabattlegame2.azurewebsites.net/GameService.svc?disco" />
+    <MetadataFile FileName="GameService2.xsd" MetadataType="Schema" ID="a77e8337-8894-4abf-83c8-d8f39eb4b8a8" SourceId="1" SourceUrl="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd2" />
+    <MetadataFile FileName="GameService.wsdl" MetadataType="Wsdl" ID="7a7b303b-3020-4d18-9e5c-720c8dfa0d37" SourceId="1" SourceUrl="http://seabattlegame2.azurewebsites.net/GameService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

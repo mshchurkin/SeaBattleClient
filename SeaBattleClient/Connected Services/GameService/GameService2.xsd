@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SeaBattleGame" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SeaBattleGame" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Player">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:PlayerStatus" />
+      <xs:element minOccurs="0" name="_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:simpleType name="PlayerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Waiting" />
+      <xs:enumeration value="InGame" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PlayerStatus" nillable="true" type="tns:PlayerStatus" />
+  <xs:complexType name="ArrayOfPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Player" nillable="true" type="tns:Player" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayer" nillable="true" type="tns:ArrayOfPlayer" />
+  <xs:complexType name="Ships">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ships" nillable="true" type="tns:ArrayOfShip" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ships" nillable="true" type="tns:Ships" />
+  <xs:complexType name="ArrayOfShip">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ship" nillable="true" type="tns:Ship" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShip" nillable="true" type="tns:ArrayOfShip" />
+  <xs:complexType name="Ship">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cells" nillable="true" type="tns:ArrayOfCell" />
+      <xs:element minOccurs="0" name="Length" type="xs:int" />
+      <xs:element minOccurs="0" name="_length" type="xs:int" />
+      <xs:element minOccurs="0" name="cells" nillable="true" type="tns:ArrayOfCell" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ship" nillable="true" type="tns:Ship" />
+  <xs:complexType name="ArrayOfCell">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cell" nillable="true" type="tns:Cell" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCell" nillable="true" type="tns:ArrayOfCell" />
+  <xs:complexType name="Cell">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hit" type="xs:boolean" />
+      <xs:element minOccurs="0" name="x" type="xs:int" />
+      <xs:element minOccurs="0" name="y" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cell" nillable="true" type="tns:Cell" />
+</xs:schema>
