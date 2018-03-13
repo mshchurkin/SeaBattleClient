@@ -412,32 +412,34 @@ namespace SeaBattleClient
             }
             else
             {
-                Ships ships = new Ships();
-                ships.ships = shipsList;
-                if (client.ShipsLocate(myId, battleId, ships) == true)
-                {
-                    mainLabel.Content = "Ожидание второго игрока";
-                    HorRad.Visibility = Visibility.Hidden;
-                    VertRad.Visibility = Visibility.Hidden;
-                    fourCheck.Visibility = Visibility.Hidden;
-                    threeCheck.Visibility = Visibility.Hidden;
-                    twoCheck.Visibility = Visibility.Hidden;
-                    oneCheck.Visibility = Visibility.Hidden;
-                    TimerCheckStartBattle();
-                }
-                else
-                {
-                    MessageBox.Show("Неправильно расставлены корабли");
-                    fourCheck.IsEnabled = true;
-                    threeCount = 3;
-                    threeCheck.IsEnabled = true;
-                    twoCount = 2;
-                    twoCheck.IsEnabled = true;
-                    oneCheck.IsEnabled = true;
-                    oneCount = 4;
-                    MyCells.Items.Clear();
-                    EnemyCells.Items.Clear();
-                    FillBattleCells();
+                if ((twoCount < 1) && (oneCount < 1) && (threeCount < 1) && (fourCheck.IsEnabled == false){
+                    Ships ships = new Ships();
+                    ships.ships = shipsList;
+                    if (client.ShipsLocate(myId, battleId, ships) == true)
+                    {
+                        mainLabel.Content = "Ожидание второго игрока";
+                        HorRad.Visibility = Visibility.Hidden;
+                        VertRad.Visibility = Visibility.Hidden;
+                        fourCheck.Visibility = Visibility.Hidden;
+                        threeCheck.Visibility = Visibility.Hidden;
+                        twoCheck.Visibility = Visibility.Hidden;
+                        oneCheck.Visibility = Visibility.Hidden;
+                        TimerCheckStartBattle();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неправильно расставлены корабли");
+                        fourCheck.IsEnabled = true;
+                        threeCount = 3;
+                        threeCheck.IsEnabled = true;
+                        twoCount = 2;
+                        twoCheck.IsEnabled = true;
+                        oneCheck.IsEnabled = true;
+                        oneCount = 4;
+                        MyCells.Items.Clear();
+                        EnemyCells.Items.Clear();
+                        FillBattleCells();
+                    }
                 }
             }
         }
@@ -449,7 +451,7 @@ namespace SeaBattleClient
                 IList<DataGridCellInfo> cellsList = EnemyCells.SelectedCells;
 
                 BattleCell battleCell = cellsList.First().Item as BattleCell;
-                int colIndex = EnemyCells.CurrentCell.Column.DisplayIndex;
+                int colIndex = EnemyCells.CurrentCell.Column.DisplayIndex-1;
                 var rowIndex = battleCell.RowNum - 1;
 
                 bool success = client.MakeShot(colIndex, rowIndex, myId, battleId);

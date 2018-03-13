@@ -30,6 +30,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetListBattle">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetListBattleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetListBattleResult" nillable="true" type="q3:ArrayOfBattle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="StartBattle">
     <xs:complexType>
       <xs:sequence>
@@ -80,7 +92,7 @@
   <xs:element name="ShowOnlinePlayersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="ShowOnlinePlayersResult" nillable="true" type="q3:ArrayOfPlayer" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="ShowOnlinePlayersResult" nillable="true" type="q4:ArrayOfPlayer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -106,7 +118,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="playerID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="battleID" nillable="true" type="xs:string" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="ships" nillable="true" type="q4:Ships" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="ships" nillable="true" type="q5:Ships" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -127,7 +139,7 @@
   <xs:element name="GetPlayerOneResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetPlayerOneResult" nillable="true" type="q5:Player" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetPlayerOneResult" nillable="true" type="q6:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +153,7 @@
   <xs:element name="GetPlayerTwoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetPlayerTwoResult" nillable="true" type="q6:Player" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetPlayerTwoResult" nillable="true" type="q7:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

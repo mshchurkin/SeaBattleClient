@@ -29,20 +29,28 @@ namespace SeaBattleClient
 
         async void TimerCheckStartBattle()
         {
-            string battleId = await GetBattleInto(3000);
-            if (battleId !="0" )
+            bool flag = false;
+            do
             {
-                BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, battleId);
-                battleFieldWindow.Show();
-                this.Close();
-            }
+                string battleId = await GetBattleInto(3000);
+                if (battleId != "0")
+                {
+
+                    BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, battleId);
+                    battleFieldWindow.Show();
+                    flag = true;
+                    this.Close();
+                }
+            } while (flag==false);
         }
 
         Task<string> GetBattleInto(int time)
         {
             return Task.Run(() => {
                 Thread.Sleep(time);
-                return client.StartBattle(battleId);
+                if (client.GetListBattle().Where(x => x.GetPlayerTwo.GetID == myId).Count()!=0)
+                    return client.GetListBattle().Where(x => x.GetPlayerTwo.GetID == myId).First().GetID;
+                else return "0";
             });
         }
         public EnemySelection(String myId,String myName)

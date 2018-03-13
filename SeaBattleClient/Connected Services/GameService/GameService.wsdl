@@ -44,6 +44,12 @@
   <wsdl:message name="IService1_CreateBattle_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateBattleResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetListBattle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBattle" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetListBattle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListBattleResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_StartBattle_InputMessage">
     <wsdl:part name="parameters" element="tns:StartBattle" />
   </wsdl:message>
@@ -119,6 +125,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateBattle" message="tns:IService1_CreateBattle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateBattleResponse" message="tns:IService1_CreateBattle_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetListBattle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetListBattle" message="tns:IService1_GetListBattle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetListBattleResponse" message="tns:IService1_GetListBattle_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="StartBattle">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/StartBattle" message="tns:IService1_StartBattle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/StartBattleResponse" message="tns:IService1_StartBattle_OutputMessage" />
@@ -177,6 +187,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateBattle">
       <soap:operation soapAction="http://tempuri.org/IService1/CreateBattle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListBattle">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetListBattle" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -298,6 +317,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateBattle">
       <soap:operation soapAction="http://tempuri.org/IService1/CreateBattle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListBattle">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetListBattle" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

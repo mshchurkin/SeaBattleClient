@@ -124,6 +124,9 @@
     <None Include="Connected Services\GameService\GameService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\GameService\SeaBattleClient.GameService.Battle.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\GameService\SeaBattleClient.GameService.Player.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

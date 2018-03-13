@@ -23,6 +23,9 @@ namespace SeaBattleClient.GameService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GetBattleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string GetIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -38,6 +41,19 @@ namespace SeaBattleClient.GameService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GetBattleID {
+            get {
+                return this.GetBattleIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetBattleIDField, value) != true)) {
+                    this.GetBattleIDField = value;
+                    this.RaisePropertyChanged("GetBattleID");
+                }
             }
         }
         
@@ -99,6 +115,145 @@ namespace SeaBattleClient.GameService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         InGame = 1,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Battle", Namespace="http://schemas.datacontract.org/2004/07/SeaBattleGame")]
+    [System.SerializableAttribute()]
+    public partial class Battle : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GetIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SeaBattleClient.GameService.Player GetPlayerOneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SeaBattleClient.GameService.Player GetPlayerTwoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SeaBattleClient.GameService.BattleStatus GetStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GetTurnPlayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string GetWinnerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GetID {
+            get {
+                return this.GetIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetIDField, value) != true)) {
+                    this.GetIDField = value;
+                    this.RaisePropertyChanged("GetID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SeaBattleClient.GameService.Player GetPlayerOne {
+            get {
+                return this.GetPlayerOneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetPlayerOneField, value) != true)) {
+                    this.GetPlayerOneField = value;
+                    this.RaisePropertyChanged("GetPlayerOne");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SeaBattleClient.GameService.Player GetPlayerTwo {
+            get {
+                return this.GetPlayerTwoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetPlayerTwoField, value) != true)) {
+                    this.GetPlayerTwoField = value;
+                    this.RaisePropertyChanged("GetPlayerTwo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SeaBattleClient.GameService.BattleStatus GetStatus {
+            get {
+                return this.GetStatusField;
+            }
+            set {
+                if ((this.GetStatusField.Equals(value) != true)) {
+                    this.GetStatusField = value;
+                    this.RaisePropertyChanged("GetStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GetTurnPlayer {
+            get {
+                return this.GetTurnPlayerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetTurnPlayerField, value) != true)) {
+                    this.GetTurnPlayerField = value;
+                    this.RaisePropertyChanged("GetTurnPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string GetWinner {
+            get {
+                return this.GetWinnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GetWinnerField, value) != true)) {
+                    this.GetWinnerField = value;
+                    this.RaisePropertyChanged("GetWinner");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BattleStatus", Namespace="http://schemas.datacontract.org/2004/07/SeaBattleGame")]
+    public enum BattleStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ShipsLocating = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        InProcess = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Finished = 2,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -300,6 +455,12 @@ namespace SeaBattleClient.GameService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateBattle", ReplyAction="http://tempuri.org/IService1/CreateBattleResponse")]
         System.Threading.Tasks.Task<string> CreateBattleAsync(SeaBattleClient.GameService.Player one, SeaBattleClient.GameService.Player two);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetListBattle", ReplyAction="http://tempuri.org/IService1/GetListBattleResponse")]
+        System.Collections.Generic.List<SeaBattleClient.GameService.Battle> GetListBattle();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetListBattle", ReplyAction="http://tempuri.org/IService1/GetListBattleResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<SeaBattleClient.GameService.Battle>> GetListBattleAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/StartBattle", ReplyAction="http://tempuri.org/IService1/StartBattleResponse")]
         bool StartBattle(string battleID);
         
@@ -408,6 +569,14 @@ namespace SeaBattleClient.GameService {
         
         public System.Threading.Tasks.Task<string> CreateBattleAsync(SeaBattleClient.GameService.Player one, SeaBattleClient.GameService.Player two) {
             return base.Channel.CreateBattleAsync(one, two);
+        }
+        
+        public System.Collections.Generic.List<SeaBattleClient.GameService.Battle> GetListBattle() {
+            return base.Channel.GetListBattle();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<SeaBattleClient.GameService.Battle>> GetListBattleAsync() {
+            return base.Channel.GetListBattleAsync();
         }
         
         public bool StartBattle(string battleID) {
