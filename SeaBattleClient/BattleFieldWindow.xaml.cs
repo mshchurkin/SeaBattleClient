@@ -38,17 +38,20 @@ namespace SeaBattleClient
 
         async void TimerCheck()
         {
-            string message = await GetTurn(3000);
-            if (message == myId)
+            do
             {
-                EnemyCells.IsEnabled = true;
-                mainLabel.Content = "Ваш ход";
-            }
-            else
-            {
-                EnemyCells.IsEnabled = false;
-                mainLabel.Content = "Ход другого игрока";
-            }
+                string message = await GetTurn(3000);
+                if (message == myId)
+                {
+                    EnemyCells.IsEnabled = true;
+                    mainLabel.Content = "Ваш ход";
+                }
+                else
+                {
+                    EnemyCells.IsEnabled = false;
+                    mainLabel.Content = "Ход другого игрока";
+                }
+            } while (true);
         }
 
         Task<string> GetTurn(int time)
