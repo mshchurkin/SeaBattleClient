@@ -8,6 +8,6 @@
         Title="MainWindow" Height="250" Width="525">
     <Grid Background="DarkBlue">
             <Label VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="52" Foreground="OrangeRed" FontFamily="IMPACT" >МОРСКОЙ БОЙ</Label>
-        <Button VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Background="Aqua" Foreground="Red" FontFamily="Impact" Click="Button_Click">Начать игру</Button>
+        <Button VerticalAlignment="Center" Name="btn" HorizontalAlignment="Center" FontSize="36" Background="Aqua" Foreground="Red" FontFamily="Impact" Click="Button_Click">Начать игру</Button>
     </Grid>
 </Window>

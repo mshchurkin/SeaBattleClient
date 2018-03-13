@@ -23,13 +23,13 @@ namespace SeaBattleClient.GameService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IDField;
+        private string GetIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private SeaBattleClient.GameService.PlayerStatus StatusField;
+        private string GetNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string _nameField;
+        private SeaBattleClient.GameService.PlayerStatus GetStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -42,40 +42,40 @@ namespace SeaBattleClient.GameService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ID {
+        public string GetID {
             get {
-                return this.IDField;
+                return this.GetIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.IDField, value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
+                if ((object.ReferenceEquals(this.GetIDField, value) != true)) {
+                    this.GetIDField = value;
+                    this.RaisePropertyChanged("GetID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public SeaBattleClient.GameService.PlayerStatus Status {
+        public string GetName {
             get {
-                return this.StatusField;
+                return this.GetNameField;
             }
             set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
+                if ((object.ReferenceEquals(this.GetNameField, value) != true)) {
+                    this.GetNameField = value;
+                    this.RaisePropertyChanged("GetName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string _name {
+        public SeaBattleClient.GameService.PlayerStatus GetStatus {
             get {
-                return this._nameField;
+                return this.GetStatusField;
             }
             set {
-                if ((object.ReferenceEquals(this._nameField, value) != true)) {
-                    this._nameField = value;
-                    this.RaisePropertyChanged("_name");
+                if ((this.GetStatusField.Equals(value) != true)) {
+                    this.GetStatusField = value;
+                    this.RaisePropertyChanged("GetStatus");
                 }
             }
         }
@@ -161,12 +161,6 @@ namespace SeaBattleClient.GameService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LengthField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int _lengthField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<SeaBattleClient.GameService.Cell> cells1Field;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -199,32 +193,6 @@ namespace SeaBattleClient.GameService {
                 if ((this.LengthField.Equals(value) != true)) {
                     this.LengthField = value;
                     this.RaisePropertyChanged("Length");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int _length {
-            get {
-                return this._lengthField;
-            }
-            set {
-                if ((this._lengthField.Equals(value) != true)) {
-                    this._lengthField = value;
-                    this.RaisePropertyChanged("_length");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="cells")]
-        public System.Collections.Generic.List<SeaBattleClient.GameService.Cell> cells1 {
-            get {
-                return this.cells1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.cells1Field, value) != true)) {
-                    this.cells1Field = value;
-                    this.RaisePropertyChanged("cells1");
                 }
             }
         }
@@ -368,17 +336,35 @@ namespace SeaBattleClient.GameService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ShipsLocate", ReplyAction="http://tempuri.org/IService1/ShipsLocateResponse")]
         System.Threading.Tasks.Task<bool> ShipsLocateAsync(string playerID, string battleID, SeaBattleClient.GameService.Ships ships);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ExitGame", ReplyAction="http://tempuri.org/IService1/ExitGameResponse")]
-        void ExitGame(string playerID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPlayerOne", ReplyAction="http://tempuri.org/IService1/GetPlayerOneResponse")]
+        SeaBattleClient.GameService.Player GetPlayerOne(string battleID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ExitGame", ReplyAction="http://tempuri.org/IService1/ExitGameResponse")]
-        System.Threading.Tasks.Task ExitGameAsync(string playerID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPlayerOne", ReplyAction="http://tempuri.org/IService1/GetPlayerOneResponse")]
+        System.Threading.Tasks.Task<SeaBattleClient.GameService.Player> GetPlayerOneAsync(string battleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPlayerTwo", ReplyAction="http://tempuri.org/IService1/GetPlayerTwoResponse")]
+        SeaBattleClient.GameService.Player GetPlayerTwo(string battleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPlayerTwo", ReplyAction="http://tempuri.org/IService1/GetPlayerTwoResponse")]
+        System.Threading.Tasks.Task<SeaBattleClient.GameService.Player> GetPlayerTwoAsync(string battleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTurnPlayer", ReplyAction="http://tempuri.org/IService1/GetTurnPlayerResponse")]
+        string GetTurnPlayer(string battleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTurnPlayer", ReplyAction="http://tempuri.org/IService1/GetTurnPlayerResponse")]
+        System.Threading.Tasks.Task<string> GetTurnPlayerAsync(string battleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetWinner", ReplyAction="http://tempuri.org/IService1/GetWinnerResponse")]
         string GetWinner(string battleID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetWinner", ReplyAction="http://tempuri.org/IService1/GetWinnerResponse")]
         System.Threading.Tasks.Task<string> GetWinnerAsync(string battleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ExitGame", ReplyAction="http://tempuri.org/IService1/ExitGameResponse")]
+        void ExitGame(string playerID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ExitGame", ReplyAction="http://tempuri.org/IService1/ExitGameResponse")]
+        System.Threading.Tasks.Task ExitGameAsync(string playerID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -472,12 +458,28 @@ namespace SeaBattleClient.GameService {
             return base.Channel.ShipsLocateAsync(playerID, battleID, ships);
         }
         
-        public void ExitGame(string playerID) {
-            base.Channel.ExitGame(playerID);
+        public SeaBattleClient.GameService.Player GetPlayerOne(string battleID) {
+            return base.Channel.GetPlayerOne(battleID);
         }
         
-        public System.Threading.Tasks.Task ExitGameAsync(string playerID) {
-            return base.Channel.ExitGameAsync(playerID);
+        public System.Threading.Tasks.Task<SeaBattleClient.GameService.Player> GetPlayerOneAsync(string battleID) {
+            return base.Channel.GetPlayerOneAsync(battleID);
+        }
+        
+        public SeaBattleClient.GameService.Player GetPlayerTwo(string battleID) {
+            return base.Channel.GetPlayerTwo(battleID);
+        }
+        
+        public System.Threading.Tasks.Task<SeaBattleClient.GameService.Player> GetPlayerTwoAsync(string battleID) {
+            return base.Channel.GetPlayerTwoAsync(battleID);
+        }
+        
+        public string GetTurnPlayer(string battleID) {
+            return base.Channel.GetTurnPlayer(battleID);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetTurnPlayerAsync(string battleID) {
+            return base.Channel.GetTurnPlayerAsync(battleID);
         }
         
         public string GetWinner(string battleID) {
@@ -486,6 +488,14 @@ namespace SeaBattleClient.GameService {
         
         public System.Threading.Tasks.Task<string> GetWinnerAsync(string battleID) {
             return base.Channel.GetWinnerAsync(battleID);
+        }
+        
+        public void ExitGame(string playerID) {
+            base.Channel.ExitGame(playerID);
+        }
+        
+        public System.Threading.Tasks.Task ExitGameAsync(string playerID) {
+            return base.Channel.ExitGameAsync(playerID);
         }
     }
 }

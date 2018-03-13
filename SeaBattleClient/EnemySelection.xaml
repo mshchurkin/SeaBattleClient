@@ -8,7 +8,9 @@
         Title="EnemySelection" Height="400" Width="300">
     <Grid Background="DarkBlue">
         <Label VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="34" Foreground="OrangeRed" FontFamily="IMPACT" >Выбор противника</Label>
+       
         <ListBox Margin="5,50,5,40" Background="DarkBlue" Foreground="Red" Name="playersList" SelectionChanged="playersList_SelectionChanged"></ListBox>
+        <Button VerticalAlignment="Bottom" Height="30" Margin="5,5,5,40" Background="Aqua" Foreground="Red" FontFamily="Impact" FontSize="18" Click="Button_Click_1">Обновить список игроков</Button>
         <Button VerticalAlignment="Bottom" Height="30" Margin="5" Background="Aqua" Foreground="Red" FontFamily="Impact" FontSize="18" Click="Button_Click">Выбрать случайного противника</Button>
     </Grid>
 </Window>

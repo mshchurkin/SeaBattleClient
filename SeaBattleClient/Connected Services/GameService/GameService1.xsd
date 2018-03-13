@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://seabattlegame2.azurewebsites.net/GameService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SeaBattleGame" />
+  <xs:import schemaLocation="http://seabattlegame.azurewebsites.net/GameService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SeaBattleGame" />
   <xs:element name="FindEnemy">
     <xs:complexType>
       <xs:sequence>
@@ -117,16 +117,46 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExitGame">
+  <xs:element name="GetPlayerOne">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="playerID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="battleID" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ExitGameResponse">
+  <xs:element name="GetPlayerOneResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetPlayerOneResult" nillable="true" type="q5:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayerTwo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="battleID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayerTwoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SeaBattleGame" minOccurs="0" name="GetPlayerTwoResult" nillable="true" type="q6:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTurnPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="battleID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTurnPlayerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTurnPlayerResult" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetWinner">
@@ -141,6 +171,18 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="GetWinnerResult" nillable="true" type="xs:string" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExitGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="playerID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExitGameResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

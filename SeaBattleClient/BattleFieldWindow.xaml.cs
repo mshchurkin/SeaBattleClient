@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,47 @@ namespace SeaBattleClient
         String myId = "";
         String battleId = "";
         bool inithappens = false;
+
+        async void TimerCheck()
+        {
+            string message = await GetTurn(3000);
+            if (message == myId)
+            {
+                EnemyCells.IsEnabled = true;
+                mainLabel.Content = "Ваш ход";
+            }
+            else
+            {
+                EnemyCells.IsEnabled = false;
+                mainLabel.Content = "Ход другого игрока";
+            }
+        }
+
+        Task<string> GetTurn(int time)
+        {
+            return Task.Run(() => {
+                Thread.Sleep(time);
+                return client.GetTurnPlayer(battleId);
+            });
+        }
+
+        async void TimerCheckStartBattle()
+        {
+            bool ok = await GetStartBattle(3000);
+            if (ok == true)
+            {
+                TimerCheck();
+            }
+        }
+
+        Task<bool> GetStartBattle(int time)
+        {
+            return Task.Run(() => {
+                Thread.Sleep(time);
+                return client.StartBattle(battleId);
+            });
+        }
+
         public BattleFieldWindow(String myId, String battleId)
         {
             InitializeComponent();
@@ -368,29 +410,36 @@ namespace SeaBattleClient
                         oneCheck.IsEnabled = false;
                     }
             }
-            //else
-            //{
-            //    Ships ships = new Ships();
-            //    ships.ships = shipsList;
-            //    if (client.ShipsLocate(myId, battleId, ships) == true)
-            //    {
-            //        mainLabel.Content = "Ожидание второго игрока";
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Неправильно расставлены корабли");
-            //        fourCheck.IsEnabled = true;
-            //        threeCount = 3;
-            //        threeCheck.IsEnabled = true;
-            //        twoCount = 2;
-            //        twoCheck.IsEnabled = true;
-            //        oneCheck.IsEnabled = true;
-            //        oneCount = 4;
-            //        MyCells.Items.Clear();
-            //        EnemyCells.Items.Clear();
-            //        FillBattleCells();
-            //    }
-            //}
+            else
+            {
+                Ships ships = new Ships();
+                ships.ships = shipsList;
+                if (client.ShipsLocate(myId, battleId, ships) == true)
+                {
+                    mainLabel.Content = "Ожидание второго игрока";
+                    HorRad.Visibility = Visibility.Hidden;
+                    VertRad.Visibility = Visibility.Hidden;
+                    fourCheck.Visibility = Visibility.Hidden;
+                    threeCheck.Visibility = Visibility.Hidden;
+                    twoCheck.Visibility = Visibility.Hidden;
+                    oneCheck.Visibility = Visibility.Hidden;
+                    TimerCheckStartBattle();
+                }
+                else
+                {
+                    MessageBox.Show("Неправильно расставлены корабли");
+                    fourCheck.IsEnabled = true;
+                    threeCount = 3;
+                    threeCheck.IsEnabled = true;
+                    twoCount = 2;
+                    twoCheck.IsEnabled = true;
+                    oneCheck.IsEnabled = true;
+                    oneCount = 4;
+                    MyCells.Items.Clear();
+                    EnemyCells.Items.Clear();
+                    FillBattleCells();
+                }
+            }
         }
 
         private void EnemyCells_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -429,7 +478,14 @@ namespace SeaBattleClient
                         this.Close();
                     }
                 }
+                else
+                {
+                    EnemyCells.IsEnabled = false;
+                    mainLabel.Content = "Ход другого игрока";
+                }
             }
         }
+
+        
     }
 }

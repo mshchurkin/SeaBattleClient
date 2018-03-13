@@ -23,11 +23,13 @@ namespace SeaBattleClient
     {
         Service1Client client = new Service1Client();
         String myId = "";
+        String myName = "";
         Player enemy;
-        public EnemySelection(String myId)
+        public EnemySelection(String myId,String myName)
         {
             InitializeComponent();
             this.myId = myId;
+            this.myName = myName;
             UpdateList();
         }
 
@@ -36,7 +38,8 @@ namespace SeaBattleClient
             String res=client.FindEnemy(myId);
             if (res != "0")
             {
-
+                BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, "");
+                battleFieldWindow.Show();
             }
             else MessageBox.Show("Не удалось найти соперника");
         }
@@ -44,24 +47,39 @@ namespace SeaBattleClient
         private void UpdateList()
         {
             playersList.Items.Clear();
-            foreach (Player p in client.ShowOnlinePlayers().Where(x => x.ID != myId))
+            foreach (Player p in client.ShowOnlinePlayers().Where(x => x.GetID != myId).Where(x=>x.GetName!=myName))
             {
-              playersList.Items.Add(p._name);
+                playersList.Items.Add(p.GetName);
             }
         }
 
         private void playersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //enemy = client.ShowOnlinePlayers().Where(x => x._name == playersList.SelectedItem.ToString()).First();
-            //Player me = client.ShowOnlinePlayers().Where(x => x.ID == myId).First();
-            //String res = client.CreateBattle(me, enemy);
-            //if (res != "0")
-            //{
-
-            //}
-            BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId,"");
-            battleFieldWindow.Show();
+            enemy = client.ShowOnlinePlayers().Where(x => x.GetName == playersList.SelectedItem.ToString()).First();
+            Player me = client.ShowOnlinePlayers().Where(x => x.GetID == myId).First();
+            if ((me != null) && (enemy != null))
+            {
+                String res = client.CreateBattle(me, enemy);
+                if (res != "0")
+                {
+                    BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, "");
+                    battleFieldWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось создать бой");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не удалось создать бой");
+            }
             this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            UpdateList();
         }
     }
 
