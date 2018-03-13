@@ -198,7 +198,7 @@ namespace SeaBattleClient
             IList<DataGridCellInfo> cellsList = MyCells.SelectedCells;
             
             BattleCell battleCell = cellsList.First().Item as BattleCell;
-            int colIndex = MyCells.CurrentCell.Column.DisplayIndex-1;
+            int colIndex = MyCells.CurrentCell.Column.DisplayIndex;
             var rowIndex = battleCell.RowNum-1;
 
             Ship ship = new Ship();
@@ -214,29 +214,33 @@ namespace SeaBattleClient
                         cell.y = rowIndex;
                         cells.Add(cell);
                         Cell cell2 = new Cell();
-                        cell2.x = colIndex++;
+                        cell2.x = colIndex+1;
                         cell2.y = rowIndex;
-                        Cell cell3 = new Cell();
-                        cell3.x = colIndex++;
-                        cell3.y = rowIndex;
                         cells.Add(cell2);
+
+                        Cell cell3 = new Cell();
+                        cell3.x = colIndex+2;
+                        cell3.y = rowIndex;
+                        cells.Add(cell3);
+
                         Cell cell4 = new Cell();
-                        cell4.x = colIndex++;
+                        cell4.x = colIndex+3;
                         cell4.y = rowIndex;
                         cells.Add(cell4);
-                        cells.Add(cell3);
+
                         ship.Length = 4;
                         ship.Cells = cells;
                         shipsList.Add(ship);
+
                         DataGridCell cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        colIndex++;
+                        colIndex = colIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        colIndex++;
+                        colIndex=colIndex+1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        colIndex++;
+                        colIndex = colIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
                         fourCheck.IsChecked = false;
@@ -252,31 +256,35 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
+
                         Cell cell2 = new Cell();
                         cell2.x = colIndex;
-                        cell2.y = rowIndex++;
+                        cell2.y = rowIndex+1;
+                        cells.Add(cell2);
+
                         Cell cell3 = new Cell();
                         cell3.x = colIndex;
-                        cell3.y = rowIndex++;
-                        cells.Add(cell2);
+                        cell3.y = rowIndex+2;
+                        cells.Add(cell3);
+
                         Cell cell4 = new Cell();
                         cell4.x = colIndex;
-                        cell4.y = rowIndex++;
+                        cell4.y = rowIndex+3;
                         cells.Add(cell4);
-                        cells.Add(cell3);
+
                         ship.Length = 4;
                         ship.Cells = cells;
                         shipsList.Add(ship);
 
                         DataGridCell cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        rowIndex++;
+                        rowIndex=rowIndex+1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        rowIndex++;
+                        rowIndex = rowIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        rowIndex++;
+                        rowIndex = rowIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
                         fourCheck.IsChecked = false;
@@ -297,10 +305,10 @@ namespace SeaBattleClient
                         cell.y = rowIndex;
                         cells.Add(cell);
                         Cell cell2 = new Cell();
-                        cell2.x = colIndex++;
+                        cell2.x = colIndex+1;
                         cell2.y = rowIndex;
                         Cell cell3 = new Cell();
-                        cell3.x = colIndex++;
+                        cell3.x = colIndex+2;
                         cell3.y = rowIndex;
                         cells.Add(cell2);
                         cells.Add(cell3);
@@ -310,10 +318,10 @@ namespace SeaBattleClient
 
                         DataGridCell cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        colIndex++;
+                        colIndex = colIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        colIndex++;
+                        colIndex = colIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
                         if (threeCount < 1)
@@ -336,10 +344,10 @@ namespace SeaBattleClient
                         cells.Add(cell);
                         Cell cell2 = new Cell();
                         cell2.x = colIndex;
-                        cell2.y = rowIndex++;
+                        cell2.y = rowIndex+1;
                         Cell cell3 = new Cell();
                         cell3.x = colIndex;
-                        cell3.y = rowIndex++;
+                        cell3.y = rowIndex+2;
                         cells.Add(cell2);
                         cells.Add(cell3);
                         ship.Length = 3;
@@ -348,10 +356,10 @@ namespace SeaBattleClient
 
                         DataGridCell cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        rowIndex++;
+                        rowIndex=rowIndex+1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        rowIndex++;
+                        rowIndex = rowIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
                         if (threeCount < 1)
@@ -377,7 +385,7 @@ namespace SeaBattleClient
                         cell.y = rowIndex;
                         cells.Add(cell);
                         Cell cell2 = new Cell();
-                        cell2.x = colIndex++;
+                        cell2.x = colIndex+1;
                         cell2.y = rowIndex;
                         cells.Add(cell2);
                         ship.Length = 2;
@@ -386,7 +394,7 @@ namespace SeaBattleClient
 
                         DataGridCell cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        colIndex++;
+                        colIndex = colIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
                         if (twoCount < 1)
@@ -409,7 +417,7 @@ namespace SeaBattleClient
                         cells.Add(cell);
                         Cell cell2 = new Cell();
                         cell2.x=colIndex;
-                        cell2.y = rowIndex++;
+                        cell2.y = rowIndex+1;
                         cells.Add(cell2);
                         ship.Length = 2;
                         ship.Cells = cells;
@@ -417,7 +425,7 @@ namespace SeaBattleClient
 
                         DataGridCell cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
-                        rowIndex++;
+                        rowIndex = rowIndex + 1;
                         cellColor = GetCell(rowIndex, colIndex, MyCells);
                         cellColor.Background = new SolidColorBrush(Colors.Green);
                         if (twoCount < 1)
@@ -488,18 +496,18 @@ namespace SeaBattleClient
                 IList<DataGridCellInfo> cellsList = EnemyCells.SelectedCells;
 
                 BattleCell battleCell = cellsList.First().Item as BattleCell;
-                int colIndex = EnemyCells.CurrentCell.Column.DisplayIndex-1;
+                int colIndex = EnemyCells.CurrentCell.Column.DisplayIndex;
                 var rowIndex = battleCell.RowNum - 1;
 
                 bool success = client.MakeShot(colIndex, rowIndex, myId, battleId);
                 if (success == true)
                 {
-                    DataGridCell cellColor = GetCell(rowIndex, colIndex+1, EnemyCells);
+                    DataGridCell cellColor = GetCell(rowIndex, colIndex, EnemyCells);
                     cellColor.Background = new SolidColorBrush(Colors.Red);
                 }
                 else
                 {
-                    DataGridCell cellColor = GetCell(rowIndex, colIndex+1, EnemyCells);
+                    DataGridCell cellColor = GetCell(rowIndex, colIndex, EnemyCells);
                     cellColor.Background = new SolidColorBrush(Colors.Blue);
                 }
                 if (client.GetWinner(battleId) != "0")
