@@ -38,7 +38,7 @@ namespace SeaBattleClient
             String res=client.FindEnemy(myId);
             if (res != "0")
             {
-                BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, "");
+                BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, res);
                 battleFieldWindow.Show();
             }
             else MessageBox.Show("Не удалось найти соперника");
@@ -62,7 +62,7 @@ namespace SeaBattleClient
                 String res = client.CreateBattle(me, enemy);
                 if (res != "0")
                 {
-                    BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, "");
+                    BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, res);
                     battleFieldWindow.Show();
                 }
                 else
