@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,12 +26,32 @@ namespace SeaBattleClient
         String myId = "";
         String myName = "";
         Player enemy;
+
+        async void TimerCheckStartBattle()
+        {
+            string battleId = await GetBattleInto(3000);
+            if (battleId !="0" )
+            {
+                BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, battleId);
+                battleFieldWindow.Show();
+                this.Close();
+            }
+        }
+
+        Task<string> GetBattleInto(int time)
+        {
+            return Task.Run(() => {
+                Thread.Sleep(time);
+                return client.StartBattle(battleId);
+            });
+        }
         public EnemySelection(String myId,String myName)
         {
             InitializeComponent();
             this.myId = myId;
             this.myName = myName;
             UpdateList();
+            TimerCheckStartBattle();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,6 +61,7 @@ namespace SeaBattleClient
             {
                 BattleFieldWindow battleFieldWindow = new BattleFieldWindow(myId, res);
                 battleFieldWindow.Show();
+                this.Close();
             }
             else MessageBox.Show("Не удалось найти соперника");
         }
