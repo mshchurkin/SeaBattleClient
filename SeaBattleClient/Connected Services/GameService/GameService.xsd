@@ -74,6 +74,8 @@
   <xs:element name="ArrayOfCell" nillable="true" type="tns:ArrayOfCell" />
   <xs:complexType name="Cell">
     <xs:sequence>
+      <xs:element minOccurs="0" name="_x" type="xs:int" />
+      <xs:element minOccurs="0" name="_y" type="xs:int" />
       <xs:element minOccurs="0" name="hit" type="xs:boolean" />
       <xs:element minOccurs="0" name="x" type="xs:int" />
       <xs:element minOccurs="0" name="y" type="xs:int" />

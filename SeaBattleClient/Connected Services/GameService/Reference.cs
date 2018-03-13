@@ -372,6 +372,12 @@ namespace SeaBattleClient.GameService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int _xField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int _yField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool hitField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -387,6 +393,32 @@ namespace SeaBattleClient.GameService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int _x {
+            get {
+                return this._xField;
+            }
+            set {
+                if ((this._xField.Equals(value) != true)) {
+                    this._xField = value;
+                    this.RaisePropertyChanged("_x");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int _y {
+            get {
+                return this._yField;
+            }
+            set {
+                if ((this._yField.Equals(value) != true)) {
+                    this._yField = value;
+                    this.RaisePropertyChanged("_y");
+                }
             }
         }
         

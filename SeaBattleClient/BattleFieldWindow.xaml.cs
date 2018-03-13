@@ -36,6 +36,16 @@ namespace SeaBattleClient
         String battleId = "";
         bool inithappens = false;
 
+        //public Ship shipFromData(int x, int y, int length, int position)
+        //{
+        //    Ship ship1 = new Ship();
+        //    List<Cell> cells = new List<Cell>();
+        //    for (int i = 0; i < length; i++)
+        //        cells.Add(
+        //            new Cell(x + i * ((position == 1) ? 0 : 1),
+        //                y + i * ((position == 1) ? 1 : 0)));
+        //    return 
+        //}
         async void TimerCheck()
         {
             do
@@ -188,7 +198,7 @@ namespace SeaBattleClient
             IList<DataGridCellInfo> cellsList = MyCells.SelectedCells;
             
             BattleCell battleCell = cellsList.First().Item as BattleCell;
-            int colIndex = MyCells.CurrentCell.Column.DisplayIndex;
+            int colIndex = MyCells.CurrentCell.Column.DisplayIndex-1;
             var rowIndex = battleCell.RowNum-1;
 
             Ship ship = new Ship();
@@ -203,12 +213,18 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
-                        cell.x++;
-                        cells.Add(cell);
-                        cell.x++;
-                        cells.Add(cell);
-                        cell.x++;
-                        cells.Add(cell);
+                        Cell cell2 = new Cell();
+                        cell2.x = colIndex++;
+                        cell2.y = rowIndex;
+                        Cell cell3 = new Cell();
+                        cell3.x = colIndex++;
+                        cell3.y = rowIndex;
+                        cells.Add(cell2);
+                        Cell cell4 = new Cell();
+                        cell4.x = colIndex++;
+                        cell4.y = rowIndex;
+                        cells.Add(cell4);
+                        cells.Add(cell3);
                         ship.Length = 4;
                         ship.Cells = cells;
                         shipsList.Add(ship);
@@ -236,12 +252,18 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
-                        cell.y++;
-                        cells.Add(cell);
-                        cell.y++;
-                        cells.Add(cell);
-                        cell.y++;
-                        cells.Add(cell);
+                        Cell cell2 = new Cell();
+                        cell2.x = colIndex;
+                        cell2.y = rowIndex++;
+                        Cell cell3 = new Cell();
+                        cell3.x = colIndex;
+                        cell3.y = rowIndex++;
+                        cells.Add(cell2);
+                        Cell cell4 = new Cell();
+                        cell4.x = colIndex;
+                        cell4.y = rowIndex++;
+                        cells.Add(cell4);
+                        cells.Add(cell3);
                         ship.Length = 4;
                         ship.Cells = cells;
                         shipsList.Add(ship);
@@ -274,10 +296,14 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
-                        cell.x++;
-                        cells.Add(cell);
-                        cell.x++;
-                        cells.Add(cell);
+                        Cell cell2 = new Cell();
+                        cell2.x = colIndex++;
+                        cell2.y = rowIndex;
+                        Cell cell3 = new Cell();
+                        cell3.x = colIndex++;
+                        cell3.y = rowIndex;
+                        cells.Add(cell2);
+                        cells.Add(cell3);
                         ship.Length = 3;
                         ship.Cells = cells;
                         shipsList.Add(ship);
@@ -308,10 +334,14 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
-                        cell.y++;
-                        cells.Add(cell);
-                        cell.y++;
-                        cells.Add(cell);
+                        Cell cell2 = new Cell();
+                        cell2.x = colIndex;
+                        cell2.y = rowIndex++;
+                        Cell cell3 = new Cell();
+                        cell3.x = colIndex;
+                        cell3.y = rowIndex++;
+                        cells.Add(cell2);
+                        cells.Add(cell3);
                         ship.Length = 3;
                         ship.Cells = cells;
                         shipsList.Add(ship);
@@ -346,8 +376,10 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
-                        cell.x++;
-                        cells.Add(cell);
+                        Cell cell2 = new Cell();
+                        cell2.x = colIndex++;
+                        cell2.y = rowIndex;
+                        cells.Add(cell2);
                         ship.Length = 2;
                         ship.Cells = cells;
                         shipsList.Add(ship);
@@ -375,8 +407,10 @@ namespace SeaBattleClient
                         cell.x = colIndex;
                         cell.y = rowIndex;
                         cells.Add(cell);
-                        cell.y++;
-                        cells.Add(cell);
+                        Cell cell2 = new Cell();
+                        cell2.x=colIndex;
+                        cell2.y = rowIndex++;
+                        cells.Add(cell2);
                         ship.Length = 2;
                         ship.Cells = cells;
                         shipsList.Add(ship);
@@ -415,7 +449,7 @@ namespace SeaBattleClient
             }
             else
             {
-                if ((twoCount < 1) && (oneCount < 1) && (threeCount < 1) && (fourCheck.IsEnabled == false){
+                if ((twoCount < 1) && (oneCount < 1) && (threeCount < 1) && (fourCheck.IsEnabled == false)){
                     Ships ships = new Ships();
                     ships.ships = shipsList;
                     if (client.ShipsLocate(myId, battleId, ships) == true)
@@ -460,12 +494,12 @@ namespace SeaBattleClient
                 bool success = client.MakeShot(colIndex, rowIndex, myId, battleId);
                 if (success == true)
                 {
-                    DataGridCell cellColor = GetCell(rowIndex, colIndex, EnemyCells);
+                    DataGridCell cellColor = GetCell(rowIndex, colIndex+1, EnemyCells);
                     cellColor.Background = new SolidColorBrush(Colors.Red);
                 }
                 else
                 {
-                    DataGridCell cellColor = GetCell(rowIndex, colIndex, EnemyCells);
+                    DataGridCell cellColor = GetCell(rowIndex, colIndex+1, EnemyCells);
                     cellColor.Background = new SolidColorBrush(Colors.Blue);
                 }
                 if (client.GetWinner(battleId) != "0")
